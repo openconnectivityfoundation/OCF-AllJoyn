@@ -1,0 +1,74 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.currenttemperature.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Current Temperature",
+  "definitions": {
+    "asa.environment.currenttemperature": {
+      "type": "object",
+      "properties": {
+        "currentvalue": {
+          "type": "number",
+          "description": "Measured value",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "to-oic": [
+              "temperature = currentValue",
+              "units = C"
+            ],
+            "from-oic": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["C"]
+                  },
+                  "from-oic": [
+                    "currentvalue = temperature"
+                  ]
+                },
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["F"]
+                  },
+                  "from-oic": [
+                    "currentvalue = (temperature-32)*5/9"
+                  ]
+                },
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["K"]
+                  },
+                  "from-oic": [
+                    "currentvalue = temperature-273.15"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "precision": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          }
+        },
+        "updatemintime": {
+          "type": "integer",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.environment.currenttemperature"}
+  ],
+  "required": [ "currentvalue","precision","updatemintime" ]
+}

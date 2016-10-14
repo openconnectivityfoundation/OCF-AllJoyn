@@ -1,0 +1,32 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.closedstatus.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Closed Status",
+  "definitions": {
+    "asa.operation.closedstatus": {
+      "type": "object",
+      "properties": {
+        "isclosed": {
+          "type": "boolean",
+          "description": "Open/Closed status Indicator",
+          "oic-conversion": {
+            "oic-alias": "oic.r.door",
+            "to-oic": [
+              "if isClosed openState = Closed",
+              "if !isClosed openState = Open"
+            ],
+            "from-oic": [
+              "isClosed = (openState == Closed)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.closedstatus"}
+  ],
+  "required": [ "isclosed"]
+}

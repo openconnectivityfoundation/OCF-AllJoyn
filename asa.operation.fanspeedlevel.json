@@ -1,0 +1,58 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.fanspeedlevel.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Fan Speed Level",
+  "definitions": {
+    "asa.operation.fanspeedlevel": {
+      "type": "object",
+      "properties": {
+        "fanspeedlevel": {
+          "type": "integer",
+          "description": "Fan speed level. 0 = off.",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airflow",
+            "to-oic": [
+              "speed = fanspeedlevel"
+            ],
+            "from-oic": [
+              "fanspeedlevel = speed"
+            ]
+          }
+        },
+        "maxfanspeedlevel": {
+          "type": "integer",
+          "description": "Max level allowed for fan speed",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airflow",
+            "to-oic": [
+              "range[0] = 0",
+              "range[1] = maxfanspeedlevel"
+            ],
+            "from-oic": [
+              "maxfanspeedlevel = range[1]"
+            ]
+          }
+        },
+        "automode": {
+          "type": "integer",
+          "description": "Auto mode status.",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airflow",
+            "to-oic": [
+              "Mapped to vendor defined Property (x.org.alljoyn)"
+            ],
+            "from-oic": [
+              "automode = NotSupported(0xFF)"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.fanspeedlevel"}
+  ],
+  "required": [ "fanspeedlevel","maxfanspeedlevel","automode" ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.targethumidity.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Target Humidity",
+  "definitions": {
+    "asa.environment.targethumidity": {
+      "type": "object",
+      "properties": {
+        "targetvalue": {
+          "type": "number",
+          "description": "Measured value",
+          "oic-conversion": {
+            "oic-alias": "oic.r.humidity,oic.r.selectablelevels",
+            "to-oic": [
+              "desiredhumidity = targetvalue"
+            ],
+            "from-oic": [
+              "targetvalue = desiredhumidity"
+            ]
+          }
+        },
+        "minvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.humidity",
+            "to-oic": [
+              "range[0] = minvalue"
+            ],
+            "from-oic": [
+              "minvalue = range[0]"
+            ]
+          }
+        },
+        "maxvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.humidity",
+            "to-oic": [
+              "range[1] = maxvalue"
+            ],
+            "from-oic": [
+              "maxvalue = range[1]"
+            ]
+          }
+        },
+        "stepvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.humidity",
+            "to-oic": [
+              "step = stepvalue"
+            ],
+            "from-oic": [
+              "stepvalue = step"
+            ]
+          }
+        },
+        "selectablehumiditylevels": {
+          "type": "array",
+          "oic-conversion": {
+            "oic-alias": "oic.r.selectablelevels",
+            "to-oic": [
+              "levels[] = selectablehumiditylevels[]"
+            ],
+            "from-oic": [
+              "selectablehumiditylevels[] = levels[]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.environment.targethumidity"}
+  ],
+  "required": [ "targetvalue","minvalue","maxvalue","stepvalue","selectablehumiditylevels" ]
+}

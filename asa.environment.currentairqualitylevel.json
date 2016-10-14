@@ -1,0 +1,73 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.currentairqualitylevel.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Current Air Quality Level",
+  "definitions": {
+    "asa.environment.currentairqualitylevel": {
+      "type": "object",
+      "properties": {
+        "contaminanttype": {
+          "type": "integer",
+          "description": "The contaminant type",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "valuetype = Qualitative",
+              "if asa.contaminanttype = 0, ocf.contaminanttype = CH2O",
+              "if asa.contaminanttype = 1, ocf.contaminanttype = CO2",
+              "if asa.contaminanttype = 2, ocf.contaminanttype = CO",
+              "if asa.contaminanttype = 3, ocf.contaminanttype = PM2_5",
+              "if asa.contaminanttype = 4, ocf.contaminanttype = PM10",
+              "if asa.contaminanttype = 5, ocf.contaminanttype = VOC",
+              "if asa.contaminanttype = 253, ocf.contaminanttype = Smoke",
+              "if asa.contaminanttype = 254, ocf.contaminanttype = Odor",
+              "if asa.contaminanttype = 255, ocf.contaminanttype = AirPollution"
+            ],
+            "from-oic": [
+              "if ocf.contaminanttype = CH2O, asa.contaminanttype = 0",
+              "if ocf.contaminanttype = CO2, asa.contaminanttype = 1",
+              "if ocf.contaminanttype = CO, asa.contaminanttype = 2",
+              "if ocf.contaminanttype = PM2_5, asa.contaminanttype = 3",
+              "if ocf.contaminanttype = PM10, asa.contaminanttype = 4",
+              "if ocf.contaminanttype = VOC, asa.contaminanttype = 5",
+              "if ocf.contaminanttype = Smoke, asa.contaminanttype = 253",
+              "if ocf.contaminanttype = Odor, asa.contaminanttype = 254",
+              "if ocf.contaminanttype = AirPollution, asa.contaminanttype = 255"
+            ]
+          }
+        },
+        "currentlevel": {
+          "type": "integer",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "value = currentlevel"
+            ],
+            "from-oic": [
+              "currentlevel = value"
+            ]
+          }
+        },
+        "maxlevel": {
+          "type": "integer",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "range[0] = 0",
+              "range[1] = maxvalue"
+            ],
+            "from-oic": [
+              "maxvalue = range[1]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.environment.airqualitylevel"}
+  ],
+  "required": ["contaminanttype","currentlevel","maxlevel"]
+}

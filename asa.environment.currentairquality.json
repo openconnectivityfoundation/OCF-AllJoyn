@@ -1,0 +1,77 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.currentairquality.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Current Air Quality",
+  "definitions": {
+    "asa.environment.currentairquality": {
+      "type": "object",
+      "properties": {
+        "contaminanttype": {
+          "type": "integer",
+          "description": "The contaminant type",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "valuetype = Measured",
+              "contaminanttypearray = [CH2O,CO2,CO,PM2_5,PM10,VOC]",
+              "oic.contaminanttype = contaminanttypearray[asa.contaminanttype]"
+            ],
+            "from-oic": [
+              "asa.contaminanttype = indexof contaminanttypearray[oic.contaminanttype]"
+            ]
+          }
+        },
+        "currentvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "value = currentvalue"
+            ],
+            "from-oic": [
+              "currentvalue = value"
+            ]
+          }
+        },
+        "minvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "range[0] = minvalue"
+            ],
+            "from-oic": [
+              "minvalue = range[0]"
+            ]
+          }
+        },
+        "maxvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.airquality",
+            "to-oic": [
+              "range[1] = maxvalue"
+            ],
+            "from-oic": [
+              "maxvalue = range[1]"
+            ]
+          }
+        },
+        "precision": {
+          "type": "number",
+          "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+        },
+        "updatemintime": {
+          "type": "integer",
+          "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.environment.airquality"}
+  ],
+  "required": ["contaminanttype","currentvalue","minvalue","maxvalue","precision","updatemintime"]
+}

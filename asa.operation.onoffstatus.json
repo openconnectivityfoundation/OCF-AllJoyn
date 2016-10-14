@@ -1,0 +1,31 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.onoffstatus.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "On Off Mapping",
+  "definitions": {
+    "asa.operation.onoffstatus": {
+      "type": "object",
+      "properties": {
+        "onoff": {
+          "type": "boolean",
+          "description": "On/Off status of the device",
+          "oic-conversion": {
+            "oic-alias": "oic.r.switch.binary",
+            "to-oic": [
+              "value = onoff"
+            ],
+            "from-oic": [
+              "onoff = value"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.onoffstatus"}
+  ],
+  "required": [ "onoff" ]
+}

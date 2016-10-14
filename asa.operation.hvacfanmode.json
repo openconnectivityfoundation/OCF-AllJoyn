@@ -1,0 +1,51 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.hvacfanmode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "HVAC Fan Mode",
+  "definitions": {
+    "asa.operation.hvacfanmode": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "integer",
+          "description": "Current mode of device.",
+          "oic-conversion": {
+            "oic-alias": "oic.r.mode",
+            "to-oic": [
+              "modearray = [Auto,Circulation,Continuous]",
+              "mode[0] = modearray[asa.mode]"
+            ],
+            "from-oic": [
+              "modearray = [Auto,Circulation,Continuous]",
+              "mode = indexof modeArray[oic.mode[0]]"
+            ]
+          }
+        },
+        "supportedmodes": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Array of supported modes",
+          "oic-conversion": {
+            "oic-alias": "oic.r.mode",
+            "to-oic": [
+              "modearray = [Auto,Circulation,Continuous]",
+              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[asa.supportedmodes[x]]"
+            ],
+            "from-oic": [
+              "modearray = [Auto,Circulation,Continuous]",
+              "for x=0, x < sizeof(supportedmodes): asa.supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.hvacfanmode"}
+  ],
+  "required": [ "mode","supportedmodes" ]
+}

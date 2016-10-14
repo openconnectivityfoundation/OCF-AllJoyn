@@ -1,0 +1,76 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.oncontrol.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "On/Off Control",
+  "definitions": {
+    "oic.r.switch.binary": {
+      "properties": {
+        "oneOf": [
+          {
+            "properties": {
+              "value": {
+                "type": "boolean",
+                "enum": [true]
+              },
+              "oic-conversion": {
+                "from-oic": [
+                  "asa.operation.oncontrol::switchon"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "value": {
+                "type": "boolean",
+                "enum": [false]
+              },
+              "oic-conversion": {
+                "from-oic": [
+                  "asa.operation.offcontrol::switchoff"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "asa.operation.oncontrol": {
+      "type": "object",
+      "properties": {
+        "switchon": {
+          "type": "method",
+          "description": "Turn on the device",
+          "oic-conversion": {
+            "oic-alias": "oic.r.switch.binary",
+            "to-oic": [
+                "value = true"
+            ]
+          }
+        }
+      }
+    },
+    "asa.operation.offcontrol": {
+      "type": "object",
+      "properties": {
+        "switchon": {
+          "type": "method",
+          "description": "Turn off the device",
+          "oic-conversion": {
+            "oic-alias": "oic.r.switch.binary",
+            "to-oic": [
+              "value = false"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "oneOf": [
+    {"$ref": "#/definitions/oic.r.switch.binary"},
+    {"$ref": "#/definitions/asa.operation.oncontrol"},
+    {"$ref": "#/definitions/asa.operation.offcontrol"}
+  ]
+}

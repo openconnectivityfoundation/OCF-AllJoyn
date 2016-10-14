@@ -1,0 +1,96 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.targettemperature.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Target Temperature",
+  "definitions": {
+    "asa.environment.targettemperature": {
+      "type": "object",
+      "properties": {
+        "targetvalue": {
+          "type": "number",
+          "description": "Measured value",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "to-oic": [
+              "temperature = targetvalue",
+              "units = C"
+            ],
+            "from-oic": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["C"]
+                  },
+                  "from-oic": [
+                    "targetvalue = temperature"
+                  ]
+                },
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["F"]
+                  },
+                  "from-oic": [
+                    "targetvalue = (temperature-32)*5/9"
+                  ]
+                },
+                {
+                  "properties": {
+                    "units": "string",
+                    "enum": ["K"]
+                  },
+                  "from-oic": [
+                    "targetvalue = temperature-273.15"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "minvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "to-oic": [
+              "range[0] = minvalue"
+            ],
+            "from-oic": [
+              "minvalue = range[0]"
+            ]
+          }
+        },
+        "maxvalue": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "to-oic": [
+              "range[1] = maxvalue"
+            ],
+            "from-oic": [
+              "maxvalue = range[1]"
+            ]
+          }
+        },
+        "step": {
+          "type": "number",
+          "oic-conversion": {
+            "oic-alias": "oic.r.temperature",
+            "to-oic": [
+              "step = step"
+            ],
+            "from-oic": [
+              "step = step"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.environment.targettemperature"}
+  ],
+  "required": [ "targetvalue","minvalue","maxvalue","step" ]
+}

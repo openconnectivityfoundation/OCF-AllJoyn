@@ -1,0 +1,66 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.climatecontrolmode.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Climate Control Mode",
+  "definitions": {
+    "asa.operation.climatecontrolmode": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "integer",
+          "description": "Current mode of device.",
+          "oic-conversion": {
+            "oic-alias": "oic.r.mode",
+            "to-oic": [
+              "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+              "mode[0] = modearray[asa.mode]"
+            ],
+            "from-oic": [
+              "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+              "mode = indexof modeArray[oic.mode[0]]"
+            ]
+          }
+        },
+        "supportedmodes": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Array of supported modes",
+          "oic-conversion": {
+            "oic-alias": "oic.r.mode",
+            "to-oic": [
+              "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[asa.supportedmodes[x]]"
+            ],
+            "from-oic": [
+              "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+              "for x=0, x < sizeof(supportedmodes): asa.supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+            ]
+          }
+        },
+        "operationalstate": {
+          "type": "integer",
+          "description": "Current status of device",
+          "oic-conversion": {
+            "oic-alias": "oic.r.operationalstate",
+            "to-oic": [
+              "machinestates = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+              "currentmachinestate = machinestates[asa.operationalstate]"
+            ],
+            "from-oic": [
+              "statearray = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+              "operationalstate = indexof statearray[oic.currentmachinestate[0]]"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.climatecontrolmode"}
+  ],
+  "required": [ "mode","supportedmodes","operationalstate" ]
+}

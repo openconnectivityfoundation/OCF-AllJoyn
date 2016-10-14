@@ -1,0 +1,58 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.ovencyclephase.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Oven Cycle Phase",
+  "definitions": {
+    "asa.operation.ovencyclephase": {
+      "type": "object",
+      "properties": {
+        "cyclephase": {
+          "type": "integer",
+          "description": "Current phase of the operational cycle",
+          "oic-conversion": {
+            "oic-alias": "oic.r.operationalstate",
+            "to-oic": [
+              "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+              "currentmachinestate = phasearray[asa.cyclephase]"
+            ],
+            "from-oic": [
+              "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+              "cyclephase = indexof statearray[oic.currentmachinestate[0]]"
+            ]
+          }
+        },
+        "supportedcyclephases": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Array of cycle phases supported by the Appliance.",
+          "oic-conversion": {
+            "oic-alias": "oic.r.operationalstate",
+            "to-oic": [
+              "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+              "for x=0, x < sizeof(supportedcyclephases): ocf.machinestates[x] = phasearray[asa.supportedcyclephases[x]]"
+            ],
+            "from-oic": [
+              "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+              "for x=0, x < sizeof(machinestates): asa.supportedcyclephases[x] = indexof phasearray[ocf.machinestates[x]]"
+            ]
+          }
+        },
+        "getvendorphasedescription": {
+          "type": "method",
+          "description": "Get cycle phases description",
+          "oic-conversion": {
+            "oic-alias": "oic.r.action"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.ovencyclephase"}
+  ],
+  "required": [ "cyclephase","supportedcyclephases" ]
+}

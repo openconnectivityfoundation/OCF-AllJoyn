@@ -1,0 +1,56 @@
+{
+  "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.audiovolume.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "title": "Audio Volume",
+  "definitions": {
+    "asa.operation.audiovolume": {
+      "type": "object",
+      "properties": {
+        "volume": {
+          "type": "integer",
+          "description": "Speaker volume index",
+          "oic-conversion": {
+            "oic-alias": "oic.r.audio",
+            "to-oic": [
+              "volume = volume"
+            ],
+            "from-oic": [
+              "volume = volume"
+            ]
+          }
+        },
+        "maxvolume": {
+          "type": "integer",
+          "oic-conversion": {
+            "oic-alias": "oic.r.audio",
+            "to-oic": [
+              "range[0] = 0",
+              "range[1] = maxvolume"
+            ],
+            "from-oic": [
+              "maxvolume = range[1]"
+            ]
+          }
+        },
+        "mute": {
+          "type": "boolean",
+          "oic-conversion": {
+            "oic-alias": "oic.r.audio",
+            "to-oic": [
+              "mute = mute"
+            ],
+            "from-oic": [
+              "mute = mute"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {"$ref": "#/definitions/asa.operation.audiovolume"}
+  ],
+  "required": [ "volume","maxvolume","mute" ]
+}
