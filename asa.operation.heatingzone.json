@@ -10,12 +10,12 @@
         "numberofheatingzones": {
           "type": "integer",
           "description": "Number of heating zones.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.heatingzone",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.heatingzone",
+            "to-ocf": [
               "numberofheatingzones = numberofheatingzones"
             ],
-            "from-oic": [
+            "from-ocf": [
               "numberofheatingzones = numberofheatingzones"
             ]
           }
@@ -26,12 +26,12 @@
             "type": "integer"
           },
           "description": "Max heating levels for each zone",
-          "oic-conversion": {
-            "oic-alias": "oic.r.heatingzone",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.heatingzone",
+            "to-ocf": [
               "maxheatinglevels[] = maxheatinglevels[]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "maxheatinglevels[] = maxheatinglevels[]"
             ]
           }
@@ -42,12 +42,12 @@
             "type": "integer"
           },
           "description": "Current heating levels for each zone.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.heatingzone",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.heatingzone",
+            "to-ocf": [
               "heatinglevels[] = heatinglevels[]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "heatinglevels[] = heatinglevels[]"
             ]
           }

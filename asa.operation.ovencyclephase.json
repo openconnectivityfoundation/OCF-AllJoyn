@@ -10,15 +10,15 @@
         "cyclephase": {
           "type": "integer",
           "description": "Current phase of the operational cycle",
-          "oic-conversion": {
-            "oic-alias": "oic.r.operationalstate",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.operationalstate",
+            "to-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "currentmachinestate = phasearray[asa.cyclephase]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
-              "cyclephase = indexof statearray[oic.currentmachinestate[0]]"
+              "cyclephase = indexof statearray[ocf.currentmachinestate[0]]"
             ]
           }
         },
@@ -28,13 +28,13 @@
             "type": "integer"
           },
           "description": "Array of cycle phases supported by the Appliance.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.operationalstate",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.operationalstate",
+            "to-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "for x=0, x < sizeof(supportedcyclephases): ocf.machinestates[x] = phasearray[asa.supportedcyclephases[x]]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "for x=0, x < sizeof(machinestates): asa.supportedcyclephases[x] = indexof phasearray[ocf.machinestates[x]]"
             ]
@@ -43,8 +43,8 @@
         "getvendorphasedescription": {
           "type": "method",
           "description": "Get cycle phases description",
-          "oic-conversion": {
-            "oic-alias": "oic.r.action"
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.action"
           }
         }
       }
