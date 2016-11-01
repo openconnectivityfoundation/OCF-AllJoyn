@@ -80,11 +80,11 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.temperature",
             "to-ocf": [
-              "step = step"
+              "if asa.step > 0, ocf.step = asa.step"
             ],
             "from-ocf": [
               "step = step",
-              "otherwise: step = 0"
+              "otherwise: step = undefined (0x00)"
             ]
           }
         }
