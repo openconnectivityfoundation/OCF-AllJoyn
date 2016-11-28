@@ -14,11 +14,11 @@
             "oic-alias": "oic.r.mode",
             "to-oic": [
               "modearray = [Auto,Circulation,Continuous]",
-              "mode[0] = modearray[asa.mode]"
+              "ocf.mode[0] = modearray[mode]"
             ],
             "from-oic": [
               "modearray = [Auto,Circulation,Continuous]",
-              "mode = indexof modeArray[oic.mode[0]]"
+              "mode = indexof modeArray[ocf.mode[0]]"
             ]
           }
         },
@@ -32,11 +32,11 @@
             "oic-alias": "oic.r.mode",
             "to-oic": [
               "modearray = [Auto,Circulation,Continuous]",
-              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[asa.supportedmodes[x]]"
+              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
             ],
             "from-oic": [
               "modearray = [Auto,Circulation,Continuous]",
-              "for x=0, x < sizeof(supportedmodes): asa.supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+              "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
             ]
           }
         }
