@@ -14,11 +14,11 @@
             "oic-alias": "oic.r.operationalstate",
             "to-oic": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
-              "currentmachinestate = phasearray[asa.cyclephase]"
+              "currentmachinestate = phasearray[cyclephase]"
             ],
             "from-oic": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
-              "cyclephase = indexof statearray[oic.currentmachinestate[0]]"
+              "cyclephase = indexof statearray[currentmachinestate[0]]"
             ]
           }
         },
@@ -32,11 +32,11 @@
             "oic-alias": "oic.r.operationalstate",
             "to-oic": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
-              "for x=0, x < sizeof(supportedcyclephases): ocf.machinestates[x] = phasearray[asa.supportedcyclephases[x]]"
+              "for x=0, x < sizeof(supportedcyclephases): machinestates[x] = phasearray[supportedcyclephases[x]]"
             ],
             "from-oic": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
-              "for x=0, x < sizeof(machinestates): asa.supportedcyclephases[x] = indexof phasearray[ocf.machinestates[x]]"
+              "for x=0, x < sizeof(machinestates): supportedcyclephases[x] = indexof phasearray[machinestates[x]]"
             ]
           }
         },
