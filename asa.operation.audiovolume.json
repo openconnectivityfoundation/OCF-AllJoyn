@@ -13,10 +13,10 @@
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
             "to-oic": [
-              "volume = volume"
+              "ocf.volume = volume"
             ],
             "from-oic": [
-              "volume = volume"
+              "volume = ocf.volume"
             ]
           }
         },
@@ -38,10 +38,10 @@
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
             "to-oic": [
-              "mute = mute"
+              "ocf.mute = mute"
             ],
             "from-oic": [
-              "mute = mute"
+              "mute = ocf.mute"
             ]
           }
         }
