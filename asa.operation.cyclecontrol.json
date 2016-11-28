@@ -14,11 +14,11 @@
             "oic-alias": "oic.r.operationalstate",
             "to-oic": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
-              "currentmachinestate = statearray[asa.operationalstate]"
+              "currentmachinestate = statearray[operationalstate]"
             ],
             "from-oic": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
-              "operationalstate = indexof statearray[oic.currentmachinestate[0]]"
+              "operationalstate = indexof statearray[currentmachinestate[0]]"
             ]
           }
         },
@@ -32,11 +32,11 @@
             "oic-alias": "oic.r.operationalstate",
             "to-oic": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
-              "for x=0, x < sizeof(supportedoperationalstates): ocf.machinestates[x] = statearray[asa.supportedoperationalstates[x]]"
+              "for x=0, x < sizeof(supportedoperationalstates): machinestates[x] = statearray[supportedoperationalstates[x]]"
             ],
             "from-oic": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
-              "for x=0, x < sizeof(machinestates): asa.supportedoperationalstates[x] = indexof statearray[ocf.machinestates[x]]"
+              "for x=0, x < sizeof(machinestates): supportedoperationalstates[x] = indexof statearray[machinestates[x]]"
             ]
           }
         },
