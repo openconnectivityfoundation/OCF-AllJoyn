@@ -78,10 +78,10 @@
           "oic-conversion": {
             "oic-alias": "oic.r.temperature",
             "to-oic": [
-              "step = step"
+              "ocf.step = step"
             ],
             "from-oic": [
-              "step = step"
+              "step = ocf.step"
             ]
           }
         }
