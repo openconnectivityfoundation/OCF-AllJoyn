@@ -13,8 +13,8 @@
           "oic-conversion": {
             "oic-alias": "oic.r.door",
             "to-oic": [
-              "if isClosed openState = Closed",
-              "if !isClosed openState = Open"
+              "if isClosed ocf.openState = Closed.",
+              "if !isClosed ocf.openState = Open."
             ],
             "from-oic": [
               "isClosed = (openState == Closed)"
