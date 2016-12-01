@@ -10,20 +10,20 @@
         "currentvalue": {
           "type": "number",
           "description": "Measured value",
-          "oic-conversion": {
-            "oic-alias": "oic.r.temperature",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.temperature",
+            "to-ocf": [
               "temperature = currentValue",
               "units = C"
             ],
-            "from-oic": {
+            "from-ocf": {
               "oneOf": [
                 {
                   "properties": {
                     "units": "string",
                     "enum": ["C"]
                   },
-                  "from-oic": [
+                  "from-ocf": [
                     "currentvalue = temperature"
                   ]
                 },
@@ -32,7 +32,7 @@
                     "units": "string",
                     "enum": ["F"]
                   },
-                  "from-oic": [
+                  "from-ocf": [
                     "currentvalue = (temperature-32)*5/9"
                   ]
                 },
@@ -41,7 +41,7 @@
                     "units": "string",
                     "enum": ["K"]
                   },
-                  "from-oic": [
+                  "from-ocf": [
                     "currentvalue = temperature-273.15"
                   ]
                 }
@@ -51,15 +51,15 @@
         },
         "precision": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.temperature",
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.temperature",
             "description": "Mapped to vendor defined Property (x.org.alljoyn)"
           }
         },
         "updatemintime": {
           "type": "integer",
-          "oic-conversion": {
-            "oic-alias": "oic.r.temperature",
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.temperature",
             "description": "Mapped to vendor defined Property (x.org.alljoyn)"
           }
         }

@@ -10,12 +10,12 @@
         "fanspeedlevel": {
           "type": "integer",
           "description": "Fan speed level. 0 = off.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airflow",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airflow",
+            "to-ocf": [
               "speed = fanspeedlevel"
             ],
-            "from-oic": [
+            "from-ocf": [
               "fanspeedlevel = speed"
             ]
           }
@@ -23,13 +23,13 @@
         "maxfanspeedlevel": {
           "type": "integer",
           "description": "Max level allowed for fan speed",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airflow",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airflow",
+            "to-ocf": [
               "range[0] = 0",
               "range[1] = maxfanspeedlevel"
             ],
-            "from-oic": [
+            "from-ocf": [
               "maxfanspeedlevel = range[1]"
             ]
           }
@@ -37,12 +37,12 @@
         "automode": {
           "type": "integer",
           "description": "Auto mode status.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airflow",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airflow",
+            "to-ocf": [
               "Mapped to vendor defined Property (x.org.alljoyn)"
             ],
-            "from-oic": [
+            "from-ocf": [
               "automode = NotSupported(0xFF)"
             ]
           }

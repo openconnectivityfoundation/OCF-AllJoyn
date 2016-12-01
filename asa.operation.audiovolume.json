@@ -10,37 +10,37 @@
         "volume": {
           "type": "integer",
           "description": "Speaker volume index",
-          "oic-conversion": {
-            "oic-alias": "oic.r.audio",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.audio",
+            "to-ocf": [
               "volume = volume"
             ],
-            "from-oic": [
+            "from-ocf": [
               "volume = volume"
             ]
           }
         },
         "maxvolume": {
           "type": "integer",
-          "oic-conversion": {
-            "oic-alias": "oic.r.audio",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.audio",
+            "to-ocf": [
               "range[0] = 0",
               "range[1] = maxvolume"
             ],
-            "from-oic": [
+            "from-ocf": [
               "maxvolume = range[1]"
             ]
           }
         },
         "mute": {
           "type": "boolean",
-          "oic-conversion": {
-            "oic-alias": "oic.r.audio",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.audio",
+            "to-ocf": [
               "mute = mute"
             ],
-            "from-oic": [
+            "from-ocf": [
               "mute = mute"
             ]
           }

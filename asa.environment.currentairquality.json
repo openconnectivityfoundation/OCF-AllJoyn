@@ -10,50 +10,50 @@
         "contaminanttype": {
           "type": "integer",
           "description": "The contaminant type",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airquality",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airquality",
+            "to-ocf": [
               "valuetype = Measured",
               "contaminanttypearray = [CH2O,CO2,CO,PM2_5,PM10,VOC]",
-              "oic.contaminanttype = contaminanttypearray[asa.contaminanttype]"
+              "ocf.contaminanttype = contaminanttypearray[asa.contaminanttype]"
             ],
-            "from-oic": [
-              "asa.contaminanttype = indexof contaminanttypearray[oic.contaminanttype]"
+            "from-ocf": [
+              "asa.contaminanttype = indexof contaminanttypearray[ocf.contaminanttype]"
             ]
           }
         },
         "currentvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airquality",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airquality",
+            "to-ocf": [
               "value = currentvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "currentvalue = value"
             ]
           }
         },
         "minvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airquality",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airquality",
+            "to-ocf": [
               "range[0] = minvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "minvalue = range[0]"
             ]
           }
         },
         "maxvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.airquality",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.airquality",
+            "to-ocf": [
               "range[1] = maxvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "maxvalue = range[1]"
             ]
           }

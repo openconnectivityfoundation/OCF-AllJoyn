@@ -10,60 +10,60 @@
         "targetvalue": {
           "type": "number",
           "description": "Measured value",
-          "oic-conversion": {
-            "oic-alias": "oic.r.humidity,oic.r.selectablelevels",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
+            "to-ocf": [
               "desiredhumidity = targetvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "targetvalue = desiredhumidity"
             ]
           }
         },
         "minvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.humidity",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.humidity",
+            "to-ocf": [
               "range[0] = minvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "minvalue = range[0]"
             ]
           }
         },
         "maxvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.humidity",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.humidity",
+            "to-ocf": [
               "range[1] = maxvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "maxvalue = range[1]"
             ]
           }
         },
         "stepvalue": {
           "type": "number",
-          "oic-conversion": {
-            "oic-alias": "oic.r.humidity",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.humidity",
+            "to-ocf": [
               "step = stepvalue"
             ],
-            "from-oic": [
+            "from-ocf": [
               "stepvalue = step"
             ]
           }
         },
         "selectablehumiditylevels": {
           "type": "array",
-          "oic-conversion": {
-            "oic-alias": "oic.r.selectablelevels",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.selectablelevels",
+            "to-ocf": [
               "levels[] = selectablehumiditylevels[]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "selectablehumiditylevels[] = levels[]"
             ]
           }
