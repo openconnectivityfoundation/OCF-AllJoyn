@@ -28,7 +28,8 @@
               "range[0] = minvalue"
             ],
             "from-ocf": [
-              "minvalue = range[0]"
+              "minvalue = range[0]",
+              "otherwise: minvalue = 0"
             ]
           }
         },
@@ -40,7 +41,8 @@
               "range[1] = maxvalue"
             ],
             "from-ocf": [
-              "maxvalue = range[1]"
+              "maxvalue = range[1]",
+              "otherwise: maxvalue = 100"
             ]
           }
         },
@@ -52,7 +54,8 @@
               "step = stepvalue"
             ],
             "from-ocf": [
-              "stepvalue = step"
+              "stepvalue = step",
+              "otherwise: stepvalue = 1"
             ]
           }
         },

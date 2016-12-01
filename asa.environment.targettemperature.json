@@ -57,7 +57,8 @@
               "range[0] = minvalue"
             ],
             "from-ocf": [
-              "minvalue = range[0]"
+              "minvalue = range[0]",
+              "otherwise: minvalue = -MAXINT"
             ]
           }
         },
@@ -69,7 +70,8 @@
               "range[1] = maxvalue"
             ],
             "from-ocf": [
-              "maxvalue = range[1]"
+              "maxvalue = range[1]",
+              "otherwise: maxvalue = MAXINT"
             ]
           }
         },
@@ -78,10 +80,11 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.temperature",
             "to-ocf": [
-              "step = step"
+              "if asa.step > 0, ocf.step = asa.step"
             ],
             "from-ocf": [
-              "step = step"
+              "step = step",
+              "otherwise: step = undefined (0x00)"
             ]
           }
         }

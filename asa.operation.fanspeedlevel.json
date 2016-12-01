@@ -30,7 +30,8 @@
               "range[1] = maxfanspeedlevel"
             ],
             "from-ocf": [
-              "maxfanspeedlevel = range[1]"
+              "maxfanspeedlevel = range[1]",
+              "otherwise: maxfanspeedlevel = 100"
             ]
           }
         },
@@ -40,10 +41,13 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.airflow",
             "to-ocf": [
-              "Mapped to vendor defined Property (x.org.alljoyn)"
+              "if asa.automode != NotSupported(0xFF)",
+              " ocf.automode = asa.automode",
+              "else no mapping"
             ],
             "from-ocf": [
-              "automode = NotSupported(0xFF)"
+              "asa.automode = ocf.automode",
+              "otherwise: asa.automode = NotSupported(0xFF)"
             ]
           }
         }

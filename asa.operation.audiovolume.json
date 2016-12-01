@@ -29,7 +29,8 @@
               "range[1] = maxvolume"
             ],
             "from-ocf": [
-              "maxvolume = range[1]"
+              "maxvolume = range[1]",
+              "otherwise: maxvalue = 100"
             ]
           }
         },
