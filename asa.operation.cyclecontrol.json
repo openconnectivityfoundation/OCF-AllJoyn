@@ -10,15 +10,15 @@
         "operationalstate": {
           "type": "integer",
           "description": "Current operational state of the appliance",
-          "oic-conversion": {
-            "oic-alias": "oic.r.operationalstate",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.operationalstate",
+            "to-ocf": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
               "currentmachinestate = statearray[asa.operationalstate]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
-              "operationalstate = indexof statearray[oic.currentmachinestate[0]]"
+              "operationalstate = indexof statearray[ocf.currentmachinestate[0]]"
             ]
           }
         },
@@ -28,13 +28,13 @@
             "type": "integer"
           },
           "description": "Array of operational states supported by the Appliance.",
-          "oic-conversion": {
-            "oic-alias": "oic.r.operationalstate",
-            "to-oic": [
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.operationalstate",
+            "to-ocf": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
               "for x=0, x < sizeof(supportedoperationalstates): ocf.machinestates[x] = statearray[asa.supportedoperationalstates[x]]"
             ],
-            "from-oic": [
+            "from-ocf": [
               "statearray = [Idle,Working,ReadyToStart,DelayedStart,Pause,EndOfCycle]",
               "for x=0, x < sizeof(machinestates): asa.supportedoperationalstates[x] = indexof statearray[ocf.machinestates[x]]"
             ]
@@ -46,15 +46,15 @@
             "type": "integer"
           },
           "description": "Array of operatinal commands supported by the appliance",
-          "oic-conversion": {
-            "oic-alias": "oic.r.action"
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.action"
           }
         },
         "executeoperationalcomand": {
           "type": "method",
           "description": "Execute an operational command",
-          "oic-conversion": {
-            "oic-alias": "oic.r.action"
+          "ocf-conversion": {
+            "ocf-alias": "oic.r.action"
           }
         }
       }
