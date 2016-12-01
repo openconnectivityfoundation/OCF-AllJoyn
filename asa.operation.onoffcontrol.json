@@ -15,7 +15,7 @@
               },
               "ocf-conversion": {
                 "from-ocf": [
-                  "asa.operation.oncontrol::switchon"
+                  "asa.operation.oncontrol::switchon()"
                 ]
               }
             }
@@ -28,7 +28,7 @@
               },
               "ocf-conversion": {
                 "from-ocf": [
-                  "asa.operation.offcontrol::switchoff"
+                  "asa.operation.offcontrol::switchoff()"
                 ]
               }
             }
