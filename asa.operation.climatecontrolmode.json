@@ -14,7 +14,7 @@
             "ocf-alias": "oic.r.mode",
             "to-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
-              "mode[0] = modearray[asa.mode]"
+              "ocf.mode[0] = modearray[mode]"
             ],
             "from-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
@@ -32,11 +32,11 @@
             "ocf-alias": "oic.r.mode",
             "to-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
-              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[asa.supportedmodes[x]]"
+              "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
             ],
             "from-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
-              "for x=0, x < sizeof(supportedmodes): asa.supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+              "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
             ]
           }
         },
@@ -47,11 +47,11 @@
             "ocf-alias": "oic.r.operationalstate",
             "to-ocf": [
               "machinestates = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
-              "currentmachinestate = machinestates[asa.operationalstate]"
+              "currentmachinestate = machinestates[operationalstate]"
             ],
             "from-ocf": [
               "statearray = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
-              "operationalstate = indexof statearray[ocf.currentmachinestate[0]]"
+              "operationalstate = indexof statearray[currentmachinestate[0]]"
             ]
           }
         }

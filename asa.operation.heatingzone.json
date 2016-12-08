@@ -13,10 +13,10 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.heatingzone",
             "to-ocf": [
-              "numberofheatingzones = numberofheatingzones"
+              "ocf.numberofheatingzones = numberofheatingzones"
             ],
             "from-ocf": [
-              "numberofheatingzones = numberofheatingzones"
+              "numberofheatingzones = ocf.numberofheatingzones"
             ]
           }
         },
@@ -29,10 +29,10 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.heatingzone",
             "to-ocf": [
-              "maxheatinglevels[] = maxheatinglevels[]"
+              "ocf.maxheatinglevels[] = maxheatinglevels[]"
             ],
             "from-ocf": [
-              "maxheatinglevels[] = maxheatinglevels[]"
+              "maxheatinglevels[] = ocf.maxheatinglevels[]"
             ]
           }
         },
@@ -45,10 +45,10 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.heatingzone",
             "to-ocf": [
-              "heatinglevels[] = heatinglevels[]"
+              "ocf.heatinglevels[] = heatinglevels[]"
             ],
             "from-ocf": [
-              "heatinglevels[] = heatinglevels[]"
+              "heatinglevels[] = ocf.heatinglevels[]"
             ]
           }
         }

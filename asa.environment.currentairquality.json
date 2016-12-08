@@ -15,10 +15,10 @@
             "to-ocf": [
               "valuetype = Measured",
               "contaminanttypearray = [CH2O,CO2,CO,PM2_5,PM10,VOC]",
-              "ocf.contaminanttype = contaminanttypearray[asa.contaminanttype]"
+              "ocf.contaminanttype = contaminanttypearray[contaminanttype]"
             ],
-            "from-ocf": [
-              "asa.contaminanttype = indexof contaminanttypearray[ocf.contaminanttype]"
+            "from-oic": [
+              "contaminanttype = indexof contaminanttypearray[ocf.contaminanttype]"
             ]
           }
         },

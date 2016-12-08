@@ -10,6 +10,7 @@
         "volume": {
           "type": "integer",
           "description": "Speaker volume index",
+<<<<<<< HEAD
           "ocf-conversion": {
             "ocf-alias": "oic.r.audio",
             "to-ocf": [
@@ -17,6 +18,15 @@
             ],
             "from-ocf": [
               "volume = volume"
+=======
+          "oic-conversion": {
+            "oic-alias": "oic.r.audio",
+            "to-oic": [
+              "ocf.volume = volume"
+            ],
+            "from-oic": [
+              "volume = ocf.volume"
+>>>>>>> refs/remotes/origin/Bugzilla-1273
             ]
           }
         },
@@ -36,6 +46,7 @@
         },
         "mute": {
           "type": "boolean",
+<<<<<<< HEAD
           "ocf-conversion": {
             "ocf-alias": "oic.r.audio",
             "to-ocf": [
@@ -43,6 +54,15 @@
             ],
             "from-ocf": [
               "mute = mute"
+=======
+          "oic-conversion": {
+            "oic-alias": "oic.r.audio",
+            "to-oic": [
+              "ocf.mute = mute"
+            ],
+            "from-oic": [
+              "mute = ocf.mute"
+>>>>>>> refs/remotes/origin/Bugzilla-1273
             ]
           }
         }

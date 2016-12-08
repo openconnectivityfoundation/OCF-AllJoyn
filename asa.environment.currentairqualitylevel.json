@@ -14,26 +14,26 @@
             "ocf-alias": "oic.r.airquality",
             "to-ocf": [
               "valuetype = Qualitative",
-              "if asa.contaminanttype = 0, ocf.contaminanttype = CH2O",
-              "if asa.contaminanttype = 1, ocf.contaminanttype = CO2",
-              "if asa.contaminanttype = 2, ocf.contaminanttype = CO",
-              "if asa.contaminanttype = 3, ocf.contaminanttype = PM2_5",
-              "if asa.contaminanttype = 4, ocf.contaminanttype = PM10",
-              "if asa.contaminanttype = 5, ocf.contaminanttype = VOC",
-              "if asa.contaminanttype = 253, ocf.contaminanttype = Smoke",
-              "if asa.contaminanttype = 254, ocf.contaminanttype = Odor",
-              "if asa.contaminanttype = 255, ocf.contaminanttype = AirPollution"
+              "if contaminanttype = 0, ocf.contaminanttype = CH2O",
+              "if contaminanttype = 1, ocf.contaminanttype = CO2",
+              "if contaminanttype = 2, ocf.contaminanttype = CO",
+              "if contaminanttype = 3, ocf.contaminanttype = PM2_5",
+              "if contaminanttype = 4, ocf.contaminanttype = PM10",
+              "if contaminanttype = 5, ocf.contaminanttype = VOC",
+              "if contaminanttype = 253, ocf.contaminanttype = Smoke",
+              "if contaminanttype = 254, ocf.contaminanttype = Odor",
+              "if contaminanttype = 255, ocf.contaminanttype = AirPollution"
             ],
             "from-ocf": [
-              "if ocf.contaminanttype = CH2O, asa.contaminanttype = 0",
-              "if ocf.contaminanttype = CO2, asa.contaminanttype = 1",
-              "if ocf.contaminanttype = CO, asa.contaminanttype = 2",
-              "if ocf.contaminanttype = PM2_5, asa.contaminanttype = 3",
-              "if ocf.contaminanttype = PM10, asa.contaminanttype = 4",
-              "if ocf.contaminanttype = VOC, asa.contaminanttype = 5",
-              "if ocf.contaminanttype = Smoke, asa.contaminanttype = 253",
-              "if ocf.contaminanttype = Odor, asa.contaminanttype = 254",
-              "if ocf.contaminanttype = AirPollution, asa.contaminanttype = 255"
+              "if ocf.contaminanttype = CH2O, contaminanttype = 0",
+              "if ocf.contaminanttype = CO2, contaminanttype = 1",
+              "if ocf.contaminanttype = CO, contaminanttype = 2",
+              "if ocf.contaminanttype = PM2_5, contaminanttype = 3",
+              "if ocf.contaminanttype = PM10, contaminanttype = 4",
+              "if ocf.contaminanttype = VOC, contaminanttype = 5",
+              "if ocf.contaminanttype = Smoke, contaminanttype = 253",
+              "if ocf.contaminanttype = Odor, contaminanttype = 254",
+              "if ocf.contaminanttype = AirPollution, contaminanttype = 255"
             ]
           }
         },
