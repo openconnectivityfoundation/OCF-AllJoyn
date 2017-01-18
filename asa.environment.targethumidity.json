@@ -13,10 +13,12 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
             "to-ocf": [
-              "desiredhumidity = targetvalue"
+              "if minvalue != maxvalue, ocf.desiredhumidity = targetvalue;ocf.targetlevel = selectablehumiditylevels[0].",
+              "if minvalue == maxvalue, ocf.targetlevel = targetvalue."
             ],
             "from-ocf": [
-              "targetvalue = desiredhumidity"
+              "if ocf-alias == oic.r.humidity, targetvalue = desiredhumidity.",
+              "if ocf-alias == oic.r.selectablelevels, targetvalue = targetlevel."
             ]
           }
         },
@@ -64,10 +66,10 @@
           "ocf-conversion": {
             "ocf-alias": "oic.r.selectablelevels",
             "to-ocf": [
-              "levels[] = selectablehumiditylevels[]"
+              "availablelevels[] = selectablehumiditylevels[]"
             ],
             "from-ocf": [
-              "selectablehumiditylevels[] = levels[]"
+              "selectablehumiditylevels[] = availablelevels[]"
             ]
           }
         }
