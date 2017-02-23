@@ -83,7 +83,7 @@
               "ocf.step = step"
             ],
             "from-ocf": [
-              "step = ocf.step"
+              "step = ocf.step",
               "otherwise: step = undefined (0x00)"
             ]
           }
