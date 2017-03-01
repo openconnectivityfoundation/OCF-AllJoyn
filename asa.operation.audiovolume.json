@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.audiovolume.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Audio Volume",
   "definitions": {
     "asa.operation.audiovolume": {
@@ -12,23 +12,23 @@
           "description": "Speaker volume index",
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
-            "to-oic": [
+            "x-to-oic": [
               "ocf.volume = volume"
             ],
-            "from-oic": [
+            "x-from-oic": [
               "volume = ocf.volume"
             ]
           }
         },
         "maxvolume": {
           "type": "integer",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.audio",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.audio",
+            "x-to-ocf": [
               "range[0] = 0",
               "range[1] = maxvolume"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvolume = range[1]",
               "otherwise: maxvalue = 100"
             ]
@@ -38,10 +38,10 @@
           "type": "boolean",
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
-            "to-oic": [
+            "x-to-oic": [
               "ocf.mute = mute"
             ],
-            "from-oic": [
+            "x-from-oic": [
               "mute = ocf.mute"
             ]
           }

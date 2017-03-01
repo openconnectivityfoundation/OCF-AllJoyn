@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.currentairqualitylevel.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Current Air Quality Level",
   "definitions": {
     "asa.environment.currentairqualitylevel": {
@@ -10,9 +10,9 @@
         "contaminanttype": {
           "type": "integer",
           "description": "The contaminant type",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "valuetype = Qualitative",
               "if contaminanttype = 0, ocf.contaminanttype = CH2O",
               "if contaminanttype = 1, ocf.contaminanttype = CO2",
@@ -24,7 +24,7 @@
               "if contaminanttype = 254, ocf.contaminanttype = Odor",
               "if contaminanttype = 255, ocf.contaminanttype = AirPollution"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "if ocf.contaminanttype = CH2O, contaminanttype = 0",
               "if ocf.contaminanttype = CO2, contaminanttype = 1",
               "if ocf.contaminanttype = CO, contaminanttype = 2",
@@ -39,25 +39,25 @@
         },
         "currentlevel": {
           "type": "integer",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "value = currentlevel"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "currentlevel = value"
             ]
           }
         },
         "maxlevel": {
           "type": "integer",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "range[0] = 0",
               "range[1] = maxvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvalue = range[1]"
             ]
           }

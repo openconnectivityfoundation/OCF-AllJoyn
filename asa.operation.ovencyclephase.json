@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.ovencyclephase.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Oven Cycle Phase",
   "definitions": {
     "asa.operation.ovencyclephase": {
@@ -10,13 +10,13 @@
         "cyclephase": {
           "type": "integer",
           "description": "Current phase of the operational cycle",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.operationalstate",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operationalstate",
+            "x-to-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "currentmachinestate = phasearray[cyclephase]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "cyclephase = indexof statearray[currentmachinestate[0]]"
             ]
@@ -28,13 +28,13 @@
             "type": "integer"
           },
           "description": "Array of cycle phases supported by the Appliance.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.operationalstate",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operationalstate",
+            "x-to-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "for x=0, x < sizeof(supportedcyclephases): machinestates[x] = phasearray[supportedcyclephases[x]]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
               "for x=0, x < sizeof(machinestates): supportedcyclephases[x] = indexof phasearray[machinestates[x]]"
             ]
@@ -43,8 +43,8 @@
         "getvendorphasedescription": {
           "type": "method",
           "description": "Get cycle phases description",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.action"
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.action"
           }
         }
       }

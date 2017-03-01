@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.climatecontrolmode.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Climate Control Mode",
   "definitions": {
     "asa.operation.climatecontrolmode": {
@@ -10,13 +10,13 @@
         "mode": {
           "type": "integer",
           "description": "Current mode of device.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.mode",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.mode",
+            "x-to-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
               "ocf.mode[0] = modearray[mode]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
               "mode = indexof modeArray[ocf.mode[0]]"
             ]
@@ -28,13 +28,13 @@
             "type": "integer"
           },
           "description": "Array of supported modes",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.mode",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.mode",
+            "x-to-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
               "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
               "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
             ]
@@ -43,13 +43,13 @@
         "operationalstate": {
           "type": "integer",
           "description": "Current status of device",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.operationalstate",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.operationalstate",
+            "x-to-ocf": [
               "machinestates = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
               "currentmachinestate = machinestates[operationalstate]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "statearray = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
               "operationalstate = indexof statearray[currentmachinestate[0]]"
             ]

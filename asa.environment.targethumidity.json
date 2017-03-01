@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.targethumidity.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Target Humidity",
   "definitions": {
     "asa.environment.targethumidity": {
@@ -10,26 +10,26 @@
         "targetvalue": {
           "type": "number",
           "description": "Measured value",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
+            "x-to-ocf": [
               "if minvalue != maxvalue, ocf.desiredhumidity = targetvalue;ocf.targetlevel = selectablehumiditylevels[0].",
               "if minvalue == maxvalue, ocf.targetlevel = targetvalue."
             ],
-            "from-ocf": [
-              "if ocf-alias == oic.r.humidity, targetvalue = desiredhumidity.",
-              "if ocf-alias == oic.r.selectablelevels, targetvalue = targetlevel."
+            "x-from-ocf": [
+              "if x-ocf-alias == oic.r.humidity, targetvalue = desiredhumidity.",
+              "if x-ocf-alias == oic.r.selectablelevels, targetvalue = targetlevel."
             ]
           }
         },
         "minvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
               "range[0] = minvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "minvalue = range[0]",
               "otherwise: minvalue = 0"
             ]
@@ -37,12 +37,12 @@
         },
         "maxvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
               "range[1] = maxvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvalue = range[1]",
               "otherwise: maxvalue = 100"
             ]
@@ -50,12 +50,12 @@
         },
         "stepvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
               "step = stepvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "stepvalue = step",
               "otherwise: stepvalue = 1"
             ]
@@ -63,12 +63,12 @@
         },
         "selectablehumiditylevels": {
           "type": "array",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.selectablelevels",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.selectablelevels",
+            "x-to-ocf": [
               "availablelevels[] = selectablehumiditylevels[]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "selectablehumiditylevels[] = availablelevels[]"
             ]
           }
