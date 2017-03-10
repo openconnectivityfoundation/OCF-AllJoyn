@@ -10,12 +10,12 @@
         "volume": {
           "type": "integer",
           "description": "Speaker volume index",
-          "oic-conversion": {
-            "oic-alias": "oic.r.audio",
-            "x-to-oic": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.audio",
+            "x-to-ocf": [
               "ocf.volume = volume"
             ],
-            "x-from-oic": [
+            "x-from-ocf": [
               "volume = ocf.volume"
             ]
           }
@@ -36,12 +36,12 @@
         },
         "mute": {
           "type": "boolean",
-          "oic-conversion": {
-            "oic-alias": "oic.r.audio",
-            "x-to-oic": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.audio",
+            "x-to-ocf": [
               "ocf.mute = mute"
             ],
-            "x-from-oic": [
+            "x-from-ocf": [
               "mute = ocf.mute"
             ]
           }
