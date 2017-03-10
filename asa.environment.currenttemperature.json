@@ -10,20 +10,20 @@
         "currentvalue": {
           "type": "number",
           "description": "Measured value",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
               "temperature = currentValue",
               "units = C"
             ],
-            "from-ocf": {
+            "x-from-ocf": {
               "oneOf": [
                 {
                   "properties": {
                     "units": "string",
                     "enum": ["C"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "currentvalue = temperature"
                   ]
                 },
@@ -32,7 +32,7 @@
                     "units": "string",
                     "enum": ["F"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "currentvalue = (temperature-32)*5/9"
                   ]
                 },
@@ -41,7 +41,7 @@
                     "units": "string",
                     "enum": ["K"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "currentvalue = temperature-273.15"
                   ]
                 }
@@ -51,16 +51,26 @@
         },
         "precision": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
+              "ocf.precision = precision"
+            ],
+            "x-from-ocf": [
+              "precision = ocf.precision"
+            ]
           }
         },
         "updatemintime": {
           "type": "integer",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.value.conditional",
+            "x-to-ocf": [
+              "ocf.minnotifyperiod = updatemintime"
+            ],
+            "x-from-ocf": [
+              "updatemintime = ocf.minnotifyperiod"
+            ]
           }
         }
       }

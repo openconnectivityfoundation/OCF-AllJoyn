@@ -13,8 +13,8 @@
                 "type": "boolean",
                 "enum": [true]
               },
-              "ocf-conversion": {
-                "from-ocf": [
+              "x-ocf-conversion": {
+                "x-x-from-ocf": [
                   "asa.operation.oncontrol::switchon()"
                 ]
               }
@@ -26,8 +26,8 @@
                 "type": "boolean",
                 "enum": [false]
               },
-              "ocf-conversion": {
-                "from-ocf": [
+              "x-ocf-conversion": {
+                "x-x-from-ocf": [
                   "asa.operation.offcontrol::switchoff()"
                 ]
               }
@@ -42,9 +42,9 @@
         "switchon": {
           "type": "method",
           "description": "Turn on the device",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.switch.binary",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
                 "value = true"
             ]
           }
@@ -57,9 +57,9 @@
         "switchon": {
           "type": "method",
           "description": "Turn off the device",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.switch.binary",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
               "value = false"
             ]
           }

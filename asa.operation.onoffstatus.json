@@ -10,12 +10,12 @@
         "onoff": {
           "type": "boolean",
           "description": "On/Off status of the device",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.switch.binary",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.switch.binary",
+            "x-to-ocf": [
               "value = onoff"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "onoff = value"
             ]
           }

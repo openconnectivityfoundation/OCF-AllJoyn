@@ -10,61 +10,77 @@
         "contaminanttype": {
           "type": "integer",
           "description": "The contaminant type",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "valuetype = Measured",
               "contaminanttypearray = [CH2O,CO2,CO,PM2_5,PM10,VOC]",
               "ocf.contaminanttype = contaminanttypearray[contaminanttype]"
             ],
-            "from-oic": [
+            "x-from-ocf": [
               "contaminanttype = indexof contaminanttypearray[ocf.contaminanttype]"
             ]
           }
         },
         "currentvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "value = currentvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "currentvalue = value"
             ]
           }
         },
         "minvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "range[0] = minvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "minvalue = range[0]"
             ]
           }
         },
         "maxvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airquality",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
               "range[1] = maxvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvalue = range[1]"
             ]
           }
         },
         "precision": {
           "type": "number",
-          "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airquality",
+            "x-to-ocf": [
+              "ocf.precision = precision"
+            ],
+            "x-from-ocf": [
+              "precision = ocf.precision"
+            ]
+          }
         },
         "updatemintime": {
           "type": "integer",
-          "description": "Mapped to vendor defined Property (x.org.alljoyn)"
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.value.conditional",
+            "x-to-ocf": [
+              "ocf.minnotifyperiod = updatemintime"
+            ],
+            "x-from-ocf": [
+              "updatemintime = ocf.minnotifyperiod"
+            ]
+          }
         }
       }
     }

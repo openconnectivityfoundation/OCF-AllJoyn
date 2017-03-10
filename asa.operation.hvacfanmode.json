@@ -10,13 +10,13 @@
         "mode": {
           "type": "integer",
           "description": "Current mode of device.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.mode",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.mode",
+            "x-to-ocf": [
               "modearray = [Auto,Circulation,Continuous]",
               "ocf.mode[0] = modearray[mode]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "modearray = [Auto,Circulation,Continuous]",
               "mode = indexof modeArray[ocf.mode[0]]"
             ]
@@ -28,13 +28,13 @@
             "type": "integer"
           },
           "description": "Array of supported modes",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.mode",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.mode",
+            "x-to-ocf": [
               "modearray = [Auto,Circulation,Continuous]",
               "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "modearray = [Auto,Circulation,Continuous]",
               "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
             ]

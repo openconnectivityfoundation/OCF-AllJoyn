@@ -10,13 +10,13 @@
         "isclosed": {
           "type": "boolean",
           "description": "Open/Closed status Indicator",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.door",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.door",
+            "x-to-ocf": [
               "if isClosed ocf.openState = Closed.",
               "if !isClosed ocf.openState = Open."
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "isClosed = (openState == Closed)"
             ]
           }

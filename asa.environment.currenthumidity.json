@@ -10,12 +10,12 @@
         "currentvalue": {
           "type": "number",
           "description": "Measured value",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
               "humidity = currentValue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "currentvalue = humidity"
             ]
           }
@@ -23,13 +23,13 @@
         "maxvalue": {
           "type": "number",
           "description": "Max measured value for humidty",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.humidity",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.humidity",
+            "x-to-ocf": [
               "range[0] = 0",
               "range[1] = maxvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvalue = range[1]"
             ]
           }

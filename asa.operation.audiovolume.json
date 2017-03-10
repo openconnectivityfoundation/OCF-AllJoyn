@@ -12,23 +12,23 @@
           "description": "Speaker volume index",
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
-            "to-oic": [
+            "x-to-oic": [
               "ocf.volume = volume"
             ],
-            "from-oic": [
+            "x-from-oic": [
               "volume = ocf.volume"
             ]
           }
         },
         "maxvolume": {
           "type": "integer",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.audio",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.audio",
+            "x-to-ocf": [
               "range[0] = 0",
               "range[1] = maxvolume"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvolume = range[1]",
               "otherwise: maxvalue = 100"
             ]
@@ -38,10 +38,10 @@
           "type": "boolean",
           "oic-conversion": {
             "oic-alias": "oic.r.audio",
-            "to-oic": [
+            "x-to-oic": [
               "ocf.mute = mute"
             ],
-            "from-oic": [
+            "x-from-oic": [
               "mute = ocf.mute"
             ]
           }
