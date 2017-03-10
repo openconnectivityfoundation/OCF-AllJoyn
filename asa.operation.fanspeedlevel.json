@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.fanspeedlevel.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Fan Speed Level",
   "definitions": {
     "asa.operation.fanspeedlevel": {
@@ -10,12 +10,12 @@
         "fanspeedlevel": {
           "type": "integer",
           "description": "Fan speed level. 0 = off.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airflow",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airflow",
+            "x-to-ocf": [
               "speed = fanspeedlevel"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "fanspeedlevel = speed"
             ]
           }
@@ -23,13 +23,13 @@
         "maxfanspeedlevel": {
           "type": "integer",
           "description": "Max level allowed for fan speed",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airflow",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airflow",
+            "x-to-ocf": [
               "range[0] = 0",
               "range[1] = maxfanspeedlevel"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxfanspeedlevel = range[1]",
               "otherwise: maxfanspeedlevel = 100"
             ]
@@ -38,14 +38,14 @@
         "automode": {
           "type": "integer",
           "description": "Auto mode status.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.airflow",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.airflow",
+            "x-to-ocf": [
               "if asa.automode != NotSupported(0xFF)",
               " ocf.automode = asa.automode",
               "else no mapping"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "asa.automode = ocf.automode",
               "otherwise: asa.automode = NotSupported(0xFF)"
             ]

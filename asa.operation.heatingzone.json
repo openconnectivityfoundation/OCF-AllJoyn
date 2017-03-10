@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.operation.heatingzone.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Heating Zone",
   "definitions": {
     "asa.operation.heatingzone": {
@@ -10,12 +10,12 @@
         "numberofheatingzones": {
           "type": "integer",
           "description": "Number of heating zones.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.heatingzone",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.heatingzone",
+            "x-to-ocf": [
               "ocf.numberofheatingzones = numberofheatingzones"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "numberofheatingzones = ocf.numberofheatingzones"
             ]
           }
@@ -26,12 +26,12 @@
             "type": "integer"
           },
           "description": "Max heating levels for each zone",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.heatingzone",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.heatingzone",
+            "x-to-ocf": [
               "ocf.maxheatinglevels[] = maxheatinglevels[]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxheatinglevels[] = ocf.maxheatinglevels[]"
             ]
           }
@@ -42,12 +42,12 @@
             "type": "integer"
           },
           "description": "Current heating levels for each zone.",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.heatingzone",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.heatingzone",
+            "x-to-ocf": [
               "ocf.heatinglevels[] = heatinglevels[]"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "heatinglevels[] = ocf.heatinglevels[]"
             ]
           }

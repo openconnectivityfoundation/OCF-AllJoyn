@@ -1,7 +1,7 @@
 {
   "id": "http://openinterconnect.org/asamapping/schemas/asa.environment.targettemperature.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description" : "Copyright (c) 2016 Open Connectivity Foundation, Inc. All rights reserved.",
+  "description" : "Copyright (c) 2017 Open Connectivity Foundation, Inc. All rights reserved.",
   "title": "Target Temperature",
   "definitions": {
     "asa.environment.targettemperature": {
@@ -10,20 +10,20 @@
         "targetvalue": {
           "type": "number",
           "description": "Measured value",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
               "temperature = targetvalue",
               "units = C"
             ],
-            "from-ocf": {
+            "x-from-ocf": {
               "oneOf": [
                 {
                   "properties": {
                     "units": "string",
                     "enum": ["C"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "targetvalue = temperature"
                   ]
                 },
@@ -32,7 +32,7 @@
                     "units": "string",
                     "enum": ["F"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "targetvalue = (temperature-32)*5/9"
                   ]
                 },
@@ -41,7 +41,7 @@
                     "units": "string",
                     "enum": ["K"]
                   },
-                  "from-ocf": [
+                  "x-from-ocf": [
                     "targetvalue = temperature-273.15"
                   ]
                 }
@@ -51,12 +51,12 @@
         },
         "minvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
               "range[0] = minvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "minvalue = range[0]",
               "otherwise: minvalue = -MAXINT"
             ]
@@ -64,12 +64,12 @@
         },
         "maxvalue": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
               "range[1] = maxvalue"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "maxvalue = range[1]",
               "otherwise: maxvalue = MAXINT"
             ]
@@ -77,12 +77,12 @@
         },
         "step": {
           "type": "number",
-          "ocf-conversion": {
-            "ocf-alias": "oic.r.temperature",
-            "to-ocf": [
+          "x-ocf-conversion": {
+            "x-ocf-alias": "oic.r.temperature",
+            "x-to-ocf": [
               "ocf.step = step"
             ],
-            "from-ocf": [
+            "x-from-ocf": [
               "step = ocf.step",
               "otherwise: step = undefined (0x00)"
             ]
