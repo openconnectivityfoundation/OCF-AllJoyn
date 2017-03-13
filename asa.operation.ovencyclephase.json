@@ -41,7 +41,7 @@
           }
         },
         "getvendorphasedescription": {
-          "type": "method",
+          "x-ocf-type": "method",
           "description": "Get cycle phases description",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.action"

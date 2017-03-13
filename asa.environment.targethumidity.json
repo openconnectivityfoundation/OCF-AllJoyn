@@ -63,6 +63,9 @@
         },
         "selectablehumiditylevels": {
           "type": "array",
+          "items": {
+            "type": "number"
+          },
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.selectablelevels",
             "x-to-ocf": [
