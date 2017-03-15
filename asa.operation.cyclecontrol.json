@@ -51,7 +51,7 @@
           }
         },
         "executeoperationalcomand": {
-          "type": "method",
+          "x-ocf-type": "method",
           "description": "Execute an operational command",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.action"
