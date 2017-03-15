@@ -20,8 +20,10 @@ traits:
 
 /HeatingZoneResURI:
   description: |
-    This API defines the mapping between an instance of an ASA HeatingZone interface and an OCF HeatingZone Resource.
-    The ASA and OCF definitions are semantically equivalent and the Properties map 1:1
+    This API defines the mapping between an instance of an AllJoyn HeatingZone interface and an OCF HeatingZoneCollection Resource.
+    Each element in the array of heating zones within the AllJoyn HeatingZone interface maps to an instance of OCF HeatingZone, itself a link in an instance of an OCF HeatingZoneCollection.
+    The mapping defined in the schema describes the population of the OCF HeatingZone Resource that constitutes the Resources that are contained in the collection.
+
   displayName: Heating Zone Mapping
   is: [ interface-sensor ] # valid for all methods
 
@@ -33,5 +35,5 @@ traits:
             schema: RetrieveSchema
             example: |
               {
-                "rt":     ["oic.r.heatingzone"]
+                "rt":     ["oic.r.heatingzonecollection"]
               }

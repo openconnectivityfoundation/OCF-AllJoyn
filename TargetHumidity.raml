@@ -21,7 +21,7 @@ traits:
 
 /TargetHumidityResURI:
   description: |
-    This API defines the mapping between an instance of an ASA TargetHumidity Interface and the OCF Resource Equivalent.
+    This API defines the mapping between an instance of an AllJoyn TargetHumidity Interface and the OCF Resource Equivalent.
     A POST on a Humidity Sensor maps to an action on an instance of an Environment.TargetHumidity Interface.
   displayName: Target Humidity Mapping
   is: [ interface-actuator ] # valid for all methods
@@ -40,7 +40,7 @@ traits:
   post:
     body:
       application/json:
-        schema: UpdateSchema 
+        schema: UpdateSchema
     responses:
       200:
         body:

@@ -41,13 +41,13 @@
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.airflow",
             "x-to-ocf": [
-              "if asa.automode != NotSupported(0xFF)",
-              " ocf.automode = asa.automode",
+              "if automode != NotSupported(0xFF)",
+              " ocf.automode = automode",
               "else no mapping"
             ],
             "x-from-ocf": [
-              "asa.automode = ocf.automode",
-              "otherwise: asa.automode = NotSupported(0xFF)"
+              "automode = ocf.automode",
+              "otherwise: automode = NotSupported(0xFF)"
             ]
           }
         }

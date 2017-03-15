@@ -20,10 +20,10 @@ traits:
 
 /OvenCyclePhaseResURI:
   description: |
-    This API defines the mapping between an instance of an ASA OvenCyclePhase interface and the OCF OperationalState Resource.
+    This API defines the mapping between an instance of an AllJoyn OvenCyclePhase interface and the OCF OperationalState Resource.
     OvenCyclePhase cyclephase Property pre-defines values 0x00-0x7F, 0x80-0xFF is for vendor specific values. The mapping defined herein covers only Spec defined values.
     Any vendor defined value shall be represented in OCF using the x.<organization> syntax for a vendor defined Property.
-    The ASA interface also supports a Method, GetVendorPhasesDescription; this is handled in OCF using an instance of oic.r.actuator within an oic.r.action collection.
+    The AllJoyn interface also supports a Method, GetVendorPhasesDescription; this is handled in OCF using an instance of oic.r.actuator within an oic.r.action collection.
     Please see Section 8 of the Mapping Specification for specifics.
   displayName: Oven Cycle Phase Mapping
   is: [ interface-sensor ] # valid for all methods

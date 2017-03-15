@@ -20,10 +20,11 @@ traits:
 
 /CurrentAirQualityLevelResURI:
   description: |
-    This API defines the mapping between the ASA AirQualityLevel interface and the OCF AirQuality Resouce.
-    The OCF Resource is an array of objects, each instance in the array equates to an instance of the ASA AirQuality Interface if more than one instance is exposed.
-    The mapping defined in the schema describes the population of the OCF array object.
-    There shall only be single instance of an OCF AirQuality Resource. The array size therein equates to the number of instances of the ASA CurrentAirQuality interface that are exposed.
+    This API defines the mapping between the AllJoyn AirQualityLevel interface and the OCF AirQuality Resource.
+    If more than one instance of the AirQualityLevel interface is exposed then each instance maps to an instance of the OCF AirQuality Resource.
+    The mapping defined in the schema describes the population of the OCF AirQuality Resource.
+    Even if there is only a single instance of an OCF AirQuality Resource then this shall be included in an instance of an OCF AirQualityCollection.
+    The number of links in the collection equates to the number of instances of the AllJoyn CurrentAirQuality interface that are exposed.
     When mapping from OCF the valueType of the Resource shall be introspected, this API is invoked only if this is set to 'Qualitative'
 
   displayName: Air Quality Level Mapping
@@ -37,5 +38,5 @@ traits:
             schema: RetrieveSchema
             example: |
               {
-                "rt":     ["oic.r.airquality"]
+                "rt":     ["oic.r.airqualitycollection"]
               }

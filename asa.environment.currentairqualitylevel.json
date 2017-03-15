@@ -42,10 +42,10 @@
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.airquality",
             "x-to-ocf": [
-              "value = currentlevel"
+              "contaminantvalue = currentlevel"
             ],
             "x-from-ocf": [
-              "currentlevel = value"
+              "currentlevel = contaminantvalue"
             ]
           }
         },

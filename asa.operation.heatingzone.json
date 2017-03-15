@@ -11,12 +11,12 @@
           "type": "integer",
           "description": "Number of heating zones.",
           "x-ocf-conversion": {
-            "x-ocf-alias": "oic.r.heatingzone",
+            "x-ocf-alias": "oic.r.heatingzonecollection",
             "x-to-ocf": [
-              "ocf.numberofheatingzones = numberofheatingzones"
+              "number of links in the collection = numberofheatingzones"
             ],
             "x-from-ocf": [
-              "numberofheatingzones = ocf.numberofheatingzones"
+              "numberofheatingzones = number of links in the collection"
             ]
           }
         },
@@ -29,10 +29,11 @@
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.heatingzone",
             "x-to-ocf": [
-              "ocf.maxheatinglevels[] = maxheatinglevels[]"
+              "Instance of oic.r.heatingzone per array item ",
+              "for x=0, x<sizeof(maxheatinglevels): ocf.maxheatinglevel = maxheatinglevels[x]"
             ],
             "x-from-ocf": [
-              "maxheatinglevels[] = ocf.maxheatinglevels[]"
+              "for x=0;x<numlinks(oic.r.heatingzonecollection): maxheatinglevels[x] = ocf.maxheatinglevel"
             ]
           }
         },
@@ -45,10 +46,11 @@
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.heatingzone",
             "x-to-ocf": [
-              "ocf.heatinglevels[] = heatinglevels[]"
+              "Instance of oic.r.heatingzone per array item ",
+              "for x=0, x<sizeof(heatinglevels): ocf.heatinglevel = maxheatinglevels[x]"
             ],
             "x-from-ocf": [
-              "heatinglevels[] = ocf.heatinglevels[]"
+              "for x=0;x<numlinks(oic.r.heatingzonecollection): heatinglevels[x] = ocf.heatinglevel"
             ]
           }
         }
