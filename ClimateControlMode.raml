@@ -22,10 +22,10 @@ traits:
 
 /ClimateControlModeResURI:
   description: |
-    This API defines the mapping between an instance of an ASA ClimateControlMode interface and the OCF equivalent Resource.
+    This API defines the mapping between an instance of an AllJoyn ClimateControlMode interface and the OCF equivalent Resource.
     ClimateControlMode has three Properties; these map as follows:
       mode, supportedmodes -> Mode Resource
-      operationalstate -> OperationlState Resource
+      operationalstate -> OperationalState Resource
     This can be represented in OCF either as two distinct Resource instances or a single instance with two RTs (oic.r.mode, oic.r.operationalstate)
   displayName: Climate Control Mode Mapping
   is: [ interface-actuator ] # valid for all methods

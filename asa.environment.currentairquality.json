@@ -27,10 +27,10 @@
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.airquality",
             "x-to-ocf": [
-              "value = currentvalue"
+              "contaminantvalue = currentvalue"
             ],
             "x-from-ocf": [
-              "currentvalue = value"
+              "currentvalue = contaminantvalue"
             ]
           }
         },

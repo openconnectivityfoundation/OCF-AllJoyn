@@ -21,7 +21,7 @@ traits:
 
 /FanSpeedLevelResURI:
   description: |
-    This API defines the mapping between an instance of an ASA FanSpeedLevel interface and an OCF AirFlow Resource.
+    This API defines the mapping between an instance of an AllJoyn FanSpeedLevel interface and an OCF AirFlow Resource.
     Note that the setting of the FanSpeedLevel to '0x00' (off) is handled via the 'OffControl' interface rather than writing directly to this interface.
     In such a case an instance of Binary Switch shall be exposed on the OCF side; this can be modeled as AirFlowControl which is then a collection of Binary Switch and AirFlow.
   displayName: Fan Speed Level Mapping
