@@ -40,7 +40,8 @@
       "type": "object",
       "properties": {
         "switchon": {
-          "type": "method",
+          "type": "string",
+          "format": "method",
           "description": "Turn on the device",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.switch.binary",
@@ -55,7 +56,8 @@
       "type": "object",
       "properties": {
         "switchon": {
-          "type": "method",
+          "type": "string",
+          "format": "method",
           "description": "Turn off the device",
           "x-ocf-conversion": {
             "x-ocf-alias": "oic.r.switch.binary",

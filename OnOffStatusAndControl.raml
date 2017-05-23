@@ -14,10 +14,10 @@ schemas:
   - UpdateSchema: !include asa.operation.onoffcontrol.json
 
 traits:
-  - interface-sensor:
+  - interface-all:
       queryParameters:
         if:
-          enum: ["oic.if.s","oic.if.baseline"]
+          enum: ["oic.if.s","oic.if.a","oic.if.baseline"]
   - interface-actuator:
       queryParameters:
         if:
@@ -35,7 +35,7 @@ traits:
   displayName: On Off Mapping
 
   get:
-    is: [interface-sensor,interface-actuator]
+    is: [interface-all]
     responses:
       200:
         body:
