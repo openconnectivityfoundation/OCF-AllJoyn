@@ -1,0 +1,96 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OvenCyclePhaseInterfaceMapping",
+    "version": "OCFv1.0.0-20170317",
+    "license": {
+      "name": "copyright 2016-2017 Open Connectivity Foundation, Inc. All rights reserved.",
+      "x-description": "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n        1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n        2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n        THIS SOFTWARE IS PROVIDED BY THE Open Connectivity Foundation, INC. \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE OR WARRANTIES OF NON-INFRINGEMENT, ARE DISCLAIMED.\n        IN NO EVENT SHALL THE Open Connectivity Foundation, INC. OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/OvenCyclePhaseResURI" : {
+      "get": {
+        "description": "This API defines the mapping between an instance of an AllJoyn OvenCyclePhase interface and the OCF OperationalState Resource.\nOvenCyclePhase cyclephase Property pre-defines values 0x00-0x7F, 0x80-0xFF is for vendor specific values. The mapping defined herein covers only Spec defined values.\nAny vendor defined value shall be represented in OCF using the x.<organization> syntax for a vendor defined Property.\nThe AllJoyn interface also supports a Method, GetVendorPhasesDescription; this is handled in OCF using an instance of oic.r.actuator within an oic.r.action collection.\nPlease see Section 8 of the Mapping Specification for specifics.\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface-sensor"}
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt":     ["oic.r.operationalstate"]
+                }
+                ,
+              "schema": { "$ref": "#/definitions/RetrieveSchema" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "interface-sensor" : {
+      "in" : "query",
+      "name" : "if",
+      "type" : "string",
+      "enum" : ["oic.if.s", "oic.if.baseline"]
+    }
+  },
+  "definitions": {
+    "RetrieveSchema" : 
+            {
+        "properties": {
+          "cyclephase": {
+            "description": "Current phase of the operational cycle",
+            "type": "integer",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+                "cyclephase = indexof statearray[currentmachinestate[0]]"
+              ],
+              "x-ocf-alias": "oic.r.operationalstate",
+              "x-to-ocf": [
+                "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+                "currentmachinestate = phasearray[cyclephase]"
+              ]
+            }
+          },
+          "getvendorphasedescription": {
+            "description": "Get cycle phases description",
+            "x-ocf-conversion": {
+              "x-ocf-alias": "oic.r.action"
+            },
+            "x-ocf-type": "method"
+          },
+          "supportedcyclephases": {
+            "description": "Array of cycle phases supported by the Appliance.",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+                "for x=0, x < sizeof(machinestates): supportedcyclephases[x] = indexof phasearray[machinestates[x]]"
+              ],
+              "x-ocf-alias": "oic.r.operationalstate",
+              "x-to-ocf": [
+                "phasearray = [Unavailable,Preheating,Cooking,Cleaning]",
+                "for x=0, x < sizeof(supportedcyclephases): machinestates[x] = phasearray[supportedcyclephases[x]]"
+              ]
+            }
+          }
+        },
+        "required": [
+          "cyclephase",
+          "supportedcyclephases"
+        ],
+        "type": "object"
+      }
+
+  }
+}

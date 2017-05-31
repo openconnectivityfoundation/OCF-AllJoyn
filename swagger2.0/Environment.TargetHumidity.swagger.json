@@ -1,0 +1,235 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TargetHumidityInterfaceMapping",
+    "version": "OCFv1.0.0-20170317",
+    "license": {
+      "name": "copyright 2016-2017 Open Connectivity Foundation, Inc. All rights reserved.",
+      "x-description": "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n        1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n        2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n        THIS SOFTWARE IS PROVIDED BY THE Open Connectivity Foundation, INC. \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE OR WARRANTIES OF NON-INFRINGEMENT, ARE DISCLAIMED.\n        IN NO EVENT SHALL THE Open Connectivity Foundation, INC. OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/TargetHumidityResURI" : {
+      "get": {
+        "description": "This API defines the mapping between an instance of an AllJoyn TargetHumidity Interface and the OCF Resource Equivalent.\nA POST on a Humidity Sensor maps to an action on an instance of an Environment.TargetHumidity Interface.\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface-actuator"}
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt":     ["oic.r.humidity","oic.r.selectablelevels"]
+                }
+                ,
+              "schema": { "$ref": "#/definitions/RetrieveSchema" }
+            }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {"$ref": "#/parameters/interface-actuator"},
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/UpdateSchema" }
+          }
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt":     ["oic.r.humidity","oic.r.selectablelevels"]
+                }
+                ,
+              "schema": { "$ref": "#/definitions/UpdateSchema" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "interface-actuator" : {
+      "in" : "query",
+      "name" : "if",
+      "type" : "string",
+      "enum" : ["oic.if.a", "oic.if.baseline"]
+    }
+  },
+  "definitions": {
+    "RetrieveSchema" : 
+            {
+        "properties": {
+          "maxvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "maxvalue = range[1]",
+                "otherwise: maxvalue = 100"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "range[1] = maxvalue"
+              ]
+            }
+          },
+          "minvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "minvalue = range[0]",
+                "otherwise: minvalue = 0"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "range[0] = minvalue"
+              ]
+            }
+          },
+          "selectablehumiditylevels": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "selectablehumiditylevels[] = availablelevels[]"
+              ],
+              "x-ocf-alias": "oic.r.selectablelevels",
+              "x-to-ocf": [
+                "availablelevels[] = selectablehumiditylevels[]"
+              ]
+            }
+          },
+          "stepvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "stepvalue = step",
+                "otherwise: stepvalue = 1"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "step = stepvalue"
+              ]
+            }
+          },
+          "targetvalue": {
+            "description": "Measured value",
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "if x-ocf-alias == oic.r.humidity, targetvalue = desiredhumidity.",
+                "if x-ocf-alias == oic.r.selectablelevels, targetvalue = targetlevel."
+              ],
+              "x-ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
+              "x-to-ocf": [
+                "if minvalue != maxvalue, ocf.desiredhumidity = targetvalue;ocf.targetlevel = selectablehumiditylevels[0].",
+                "if minvalue == maxvalue, ocf.targetlevel = targetvalue."
+              ]
+            }
+          }
+        },
+        "required": [
+          "targetvalue",
+          "minvalue",
+          "maxvalue",
+          "stepvalue",
+          "selectablehumiditylevels"
+        ],
+        "type": "object"
+      }
+
+    ,
+    "UpdateSchema" : 
+            {
+        "properties": {
+          "maxvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "maxvalue = range[1]",
+                "otherwise: maxvalue = 100"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "range[1] = maxvalue"
+              ]
+            }
+          },
+          "minvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "minvalue = range[0]",
+                "otherwise: minvalue = 0"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "range[0] = minvalue"
+              ]
+            }
+          },
+          "selectablehumiditylevels": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "selectablehumiditylevels[] = availablelevels[]"
+              ],
+              "x-ocf-alias": "oic.r.selectablelevels",
+              "x-to-ocf": [
+                "availablelevels[] = selectablehumiditylevels[]"
+              ]
+            }
+          },
+          "stepvalue": {
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "stepvalue = step",
+                "otherwise: stepvalue = 1"
+              ],
+              "x-ocf-alias": "oic.r.humidity",
+              "x-to-ocf": [
+                "step = stepvalue"
+              ]
+            }
+          },
+          "targetvalue": {
+            "description": "Measured value",
+            "type": "number",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "if x-ocf-alias == oic.r.humidity, targetvalue = desiredhumidity.",
+                "if x-ocf-alias == oic.r.selectablelevels, targetvalue = targetlevel."
+              ],
+              "x-ocf-alias": "oic.r.humidity,oic.r.selectablelevels",
+              "x-to-ocf": [
+                "if minvalue != maxvalue, ocf.desiredhumidity = targetvalue;ocf.targetlevel = selectablehumiditylevels[0].",
+                "if minvalue == maxvalue, ocf.targetlevel = targetvalue."
+              ]
+            }
+          }
+        },
+        "required": [
+          "targetvalue",
+          "minvalue",
+          "maxvalue",
+          "stepvalue",
+          "selectablehumiditylevels"
+        ],
+        "type": "object"
+      }
+
+  }
+}

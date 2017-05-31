@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ClimateControlModeInterfaceMapping",
+    "version": "OCFv1.0.0-20170317",
+    "license": {
+      "name": "copyright 2016-2017 Open Connectivity Foundation, Inc. All rights reserved.",
+      "x-description": "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n        1.  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n        2.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n        THIS SOFTWARE IS PROVIDED BY THE Open Connectivity Foundation, INC. \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE OR WARRANTIES OF NON-INFRINGEMENT, ARE DISCLAIMED.\n        IN NO EVENT SHALL THE Open Connectivity Foundation, INC. OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n        HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/ClimateControlModeResURI" : {
+      "get": {
+        "description": "This API defines the mapping between an instance of an AllJoyn ClimateControlMode interface and the OCF equivalent Resource.\nClimateControlMode has three Properties; these map as follows:\n  mode, supportedmodes -> Mode Resource\n  operationalstate -> OperationalState Resource\nThis can be represented in OCF either as two distinct Resource instances or a single instance with two RTs (oic.r.mode, oic.r.operationalstate)\n",
+        "parameters": [
+          {"$ref": "#/parameters/interface-actuator"}
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "x-example":
+                {
+                  "rt":     ["oic.r.mode","oic.operationalstate"]
+                }
+                ,
+              "schema": { "$ref": "#/definitions/RetrieveSchema" }
+            }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {"$ref": "#/parameters/interface-actuator"},
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/UpdateSchema" }
+          }
+        ],
+        "responses": {
+            "200": {
+              "description" : "",
+              "schema": { "$ref": "#/definitions/UpdateSchema" }
+            }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "interface-actuator" : {
+      "in" : "query",
+      "name" : "if",
+      "type" : "string",
+      "enum" : ["oic.if.a", "oic.if.baseline"]
+    }
+  },
+  "definitions": {
+    "RetrieveSchema" : 
+            {
+        "properties": {
+          "mode": {
+            "description": "Current mode of device.",
+            "type": "integer",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "mode = indexof modeArray[ocf.mode[0]]"
+              ],
+              "x-ocf-alias": "oic.r.mode",
+              "x-to-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "ocf.mode[0] = modearray[mode]"
+              ]
+            }
+          },
+          "operationalstate": {
+            "description": "Current status of device",
+            "type": "integer",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "statearray = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+                "operationalstate = indexof statearray[currentmachinestate[0]]"
+              ],
+              "x-ocf-alias": "oic.r.operationalstate",
+              "x-to-ocf": [
+                "machinestates = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+                "currentmachinestate = machinestates[operationalstate]"
+              ]
+            }
+          },
+          "supportedmodes": {
+            "description": "Array of supported modes",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+              ],
+              "x-ocf-alias": "oic.r.mode",
+              "x-to-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
+              ]
+            }
+          }
+        },
+        "required": [
+          "mode",
+          "supportedmodes",
+          "operationalstate"
+        ],
+        "type": "object"
+      }
+
+    ,
+    "UpdateSchema" : 
+            {
+        "properties": {
+          "mode": {
+            "description": "Current mode of device.",
+            "type": "integer",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "mode = indexof modeArray[ocf.mode[0]]"
+              ],
+              "x-ocf-alias": "oic.r.mode",
+              "x-to-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "ocf.mode[0] = modearray[mode]"
+              ]
+            }
+          },
+          "operationalstate": {
+            "description": "Current status of device",
+            "type": "integer",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "statearray = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+                "operationalstate = indexof statearray[currentmachinestate[0]]"
+              ],
+              "x-ocf-alias": "oic.r.operationalstate",
+              "x-to-ocf": [
+                "machinestates = [Idle,Heating,Cooling,PendingHeat,PendingCool,AuxilliaryHeat]",
+                "currentmachinestate = machinestates[operationalstate]"
+              ]
+            }
+          },
+          "supportedmodes": {
+            "description": "Array of supported modes",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "x-ocf-conversion": {
+              "x-from-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "for x=0, x < sizeof(supportedmodes): supportedmodes[x] = indexof modearray[ocf.supportedmodes[x]]"
+              ],
+              "x-ocf-alias": "oic.r.mode",
+              "x-to-ocf": [
+                "modearray = [Off,Heat,Cool,Auto,AuxilliaryHeat,Dry,ContinuousDry]",
+                "for x=0, x < sizeof(supportedmodes): ocf.supportedmodes[x] = modearray[supportedmodes[x]]"
+              ]
+            }
+          }
+        },
+        "required": [
+          "mode",
+          "supportedmodes",
+          "operationalstate"
+        ],
+        "type": "object"
+      }
+
+  }
+}
