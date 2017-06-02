@@ -87,7 +87,7 @@
   },
   "type": "object",
   "allOf": [
-    {"$ref": "#/definitions/asa.environment.currentairquality"}
+    {"$ref": "#/definitions/asa.environment.airquality"}
   ],
   "required": ["contaminanttype","currentvalue","minvalue","maxvalue","precision","updatemintime"]
 }
